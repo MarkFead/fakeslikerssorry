@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}Главная - Магазин одежды{% endblock %}
+
+{% block content %}
+<div class="fade-in">
+    <!-- Hero Section -->
+    <div class="text-center mb-12">
+        <h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-4">
+            Добро пожаловать в наш
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-purple-600">
+                магазин одежды
+            </span>
+        </h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+            Откройте для себя стильную и качественную одежду по доступным ценам
+        </p>
+    </div>
+    
+    <!-- Categories Section -->
+    <div class="mb-8">
+        <div class="flex items-center justify-between mb-6">
+            <h2 class="text-3xl font-bold text-gray-800">Категории товаров</h2>
+            <a href="{{ url_for('add_category') }}" 
+               class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg transition-colors flex items-center space-x-2">
+                <i class="fas fa-plus"></i>
+                <span>Добавить категорию</span>
+            </a>
+        </div>
+        
+        {% if categories %}
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                {% for category in categories %}
+                    <div class="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden hover-scale">
+                        <a href="{{ url_for('category', category_id=category.id) }}" class="block">
+                            <div class="aspect-w-16 aspect-h-12 bg-gray-200">
+                                {% if category.image_path %}
+                                    <img src="{{ url_for('static', filename=category.image_path) }}" 
+                                         alt="{{ category.name }}"
+                                         class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                                         onerror="this.src='{{ url_for('static', filename='uploads/placeholder.jpg') }}'">
+                                {% else %}
+                                    <div class="w-full h-48 bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                                        <i class="fas fa-image text-4xl text-gray-400"></i>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold text-gray-800 mb-2 group-hover:text-primary-600 transition-colors">
+                                    {{ category.name }}
+                                </h3>
+                                <p class="text-gray-600 text-sm">
+                                    Посмотреть товары в категории
+                                </p>
+                            </div>
+                        </a>
+                        
+                        <div class="px-6 pb-6">
+                            <a href="{{ url_for('edit_category', category_id=category.id) }}" 
+                               class="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 py-2 px-4 rounded-lg transition-colors flex items-center justify-center space-x-2">
+                                <i class="fas fa-edit"></i>
+                                <span>Редактировать</span>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="text-center py-16">
+                <div class="bg-white rounded-xl shadow-lg p-12 max-w-md mx-auto">
+                    <i class="fas fa-box-open text-6xl text-gray-300 mb-6"></i>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Пока что пусто</h3>
+                    <p class="text-gray-600 mb-6">Добавьте первую категорию товаров</p>
+                    <a href="{{ url_for('add_category') }}" 
+                       class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg transition-colors inline-flex items-center space-x-2">
+                        <i class="fas fa-plus"></i>
+                        <span>Добавить категорию</span>
+                    </a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+    
+    <!-- Features Section -->
+    <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center p-6 bg-white rounded-xl shadow-lg">
+            <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-shipping-fast text-2xl text-primary-600"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Быстрая доставка</h3>
+            <p class="text-gray-600">Доставляем заказы в кратчайшие сроки</p>
+        </div>
+        
+        <div class="text-center p-6 bg-white rounded-xl shadow-lg">
+            <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-medal text-2xl text-primary-600"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Качество</h3>
+            <p class="text-gray-600">Только качественные товары от проверенных производителей</p>
+        </div>
+        
+        <div class="text-center p-6 bg-white rounded-xl shadow-lg">
+            <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-headset text-2xl text-primary-600"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Поддержка 24/7</h3>
+            <p class="text-gray-600">Наша команда всегда готова помочь вам</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

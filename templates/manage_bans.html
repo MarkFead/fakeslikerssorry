@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Управление банами</title>
+    <style>
+        /* Стили как в add_item.html */
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Магазин одежды</h1>
+        <nav>
+            {% for currency in currencies %}
+                <a href="{{ url_for('set_currency', code=currency[1]) }}">{{ currency[1] }}</a>
+            {% endfor %}
+            <a href="{{ url_for('add_category') }}">Добавить категорию</a>
+            <a href="{{ url_for('add_item') }}">Добавить товар</a>
+            <a href="{{ url_for('manage_bans') }}">Управление банами</a>
+            <a href="{{ url_for('about') }}">О нас</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Управление банами</h2>
+        <h3>Заблокированные пользователи</h3>
+        <ul>
+            {% for user in banned_users %}
+                <li>ID: {{ user[0] }} (Забанен: {{ user[1] }})</li>
+            {% endfor %}
+        </ul>
+        <h3>Заблокированные товары</h3>
+        <ul>
+            {% for item in blocked_items %}
+                <li>{{ item[1] }} (ID: {{ item[0] }})</li>
+            {% endfor %}
+        </ul>
+        <a href="{{ url_for('home') }}" class="back-link">Назад</a>
+    </main>
+</body>
+</html>

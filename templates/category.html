@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+
+{% block title %}{{ category.name }} - Магазин одежды{% endblock %}
+
+{% block content %}
+<div class="fade-in">
+    <!-- Category Header -->
+    <div class="mb-8">
+        <div class="flex items-center justify-between mb-6">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-800 mb-2">{{ category.name }}</h1>
+                <p class="text-gray-600">Товары в категории "{{ category.name }}"</p>
+            </div>
+            <a href="{{ url_for('add_item') }}" 
+               class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg transition-colors flex items-center space-x-2">
+                <i class="fas fa-plus"></i>
+                <span>Добавить товар</span>
+            </a>
+        </div>
+        
+        <!-- Category Image -->
+        {% if category.image_path %}
+            <div class="w-full h-64 bg-gray-200 rounded-xl overflow-hidden mb-6">
+                <img src="{{ url_for('static', filename=category.image_path) }}" 
+                     alt="{{ category.name }}"
+                     class="w-full h-full object-cover"
+                     onerror="this.src='{{ url_for('static', filename='uploads/placeholder.jpg') }}'">
+            </div>
+        {% endif %}
+    </div>
+    
+    <!-- Items Grid -->
+    {% if items and items|length > 0 %}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {% for item in items %}
+                <div class="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden hover-scale">
+                    <!-- Item Image -->
+                    <div class="aspect-w-16 aspect-h-12 bg-gray-200">
+                        {% if item.images %}
+                            {% set image_list = item.images.split(',') %}
+                            {% if image_list and image_list[0] and image_list[0].strip() %}
+                                <img src="{{ url_for('static', filename=image_list[0].strip()) }}"
+                                     alt="{{ item.name }}"
+                                     class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                                     onerror="this.src='{{ url_for('static', filename='uploads/placeholder.jpg') }}'">
+                            {% else %}
+                                <div class="w-full h-48 bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                                    <i class="fas fa-image text-4xl text-gray-400"></i>
+                                </div>
+                            {% endif %}
+                        {% else %}
+                            <div class="w-full h-48 bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                                <i class="fas fa-image text-4xl text-gray-400"></i>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Item Info -->
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2 group-hover:text-primary-600 transition-colors">
+                            {{ item.name }}
+                        </h3>
+
+                        {% if item.description %}
+                            <p class="text-gray-600 text-sm mb-3 line-clamp-2">
+                                {{ item.description }}
+                            </p>
+                        {% endif %}
+
+                        <!-- Price -->
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-2xl font-bold text-primary-600">
+                                {{ "%.2f"|format(item.price or 0) }} {{ selected_currency }}
+                            </span>
+                            {% if item.stock_quantity is defined %}
+                                <span class="text-sm text-gray-500">
+                                    В наличии: {{ item.stock_quantity }}
+                                </span>
+                            {% endif %}
+                        </div>
+
+                        <!-- Sizes -->
+                        {% if item.sizes %}
+                            <div class="mb-4">
+                                <span class="text-sm text-gray-500 mb-2 block">Размеры:</span>
+                                <div class="flex flex-wrap gap-1">
+                                    {% for size in item.sizes.split(',') %}
+                                        <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
+                                            {{ size.strip() }}
+                                        </span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        <!-- Action Buttons -->
+                        <div class="flex space-x-2">
+                            <button class="flex-1 bg-primary-600 hover:bg-primary-700 text-white py-2 px-4 rounded-lg transition-colors flex items-center justify-center space-x-2">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span>В корзину</span>
+                            </button>
+                            <a href="{{ url_for('edit_item', item_id=item.id) }}"
+                               class="bg-gray-100 hover:bg-gray-200 text-gray-700 py-2 px-3 rounded-lg transition-colors flex items-center justify-center">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <!-- Empty State -->
+        <div class="text-center py-16">
+            <div class="bg-white rounded-xl shadow-lg p-12 max-w-md mx-auto">
+                <i class="fas fa-box-open text-6xl text-gray-300 mb-6"></i>
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">Товары не найдены</h3>
+                <p class="text-gray-600 mb-6">В этой категории пока нет товаров</p>
+                <a href="{{ url_for('add_item') }}" 
+                   class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg transition-colors inline-flex items-center space-x-2">
+                    <i class="fas fa-plus"></i>
+                    <span>Добавить первый товар</span>
+                </a>
+            </div>
+        </div>
+    {% endif %}
+    
+    <!-- Back Button -->
+    <div class="mt-12 text-center">
+        <a href="{{ url_for('home') }}" 
+           class="text-gray-600 hover:text-gray-800 transition-colors inline-flex items-center space-x-2">
+            <i class="fas fa-arrow-left"></i>
+            <span>Вернуться к категориям</span>
+        </a>
+    </div>
+</div>
+
+<style>
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+</style>
+{% endblock %}

@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block title %}Добавить категорию - Магазин одежды{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto fade-in">
+    <!-- Header -->
+    <div class="text-center mb-8">
+        <h1 class="text-3xl font-bold text-gray-800 mb-2">Добавить новую категорию</h1>
+        <p class="text-gray-600">Создайте новую категорию товаров для вашего магазина</p>
+    </div>
+    
+    <!-- Form -->
+    <div class="bg-white rounded-xl shadow-lg p-8">
+        <form method="POST" enctype="multipart/form-data" x-data="categoryForm()" @submit="loading = true">
+            <!-- Category Name -->
+            <div class="mb-6">
+                <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
+                    <i class="fas fa-tag mr-1"></i>
+                    Название категории
+                </label>
+                <input type="text" 
+                       id="name" 
+                       name="name" 
+                       required
+                       x-model="name"
+                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
+                       placeholder="Введите название категории">
+                <p class="text-sm text-gray-500 mt-1">Например: Футболки, Джинсы, Обувь</p>
+            </div>
+            
+            <!-- Image Upload -->
+            <div class="mb-6">
+                <label for="image" class="block text-sm font-medium text-gray-700 mb-2">
+                    <i class="fas fa-image mr-1"></i>
+                    Изображение категории
+                </label>
+                <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-primary-400 transition-colors">
+                    <input type="file" 
+                           id="image" 
+                           name="image" 
+                           accept="image/*"
+                           @change="handleFileSelect($event)"
+                           x-ref="fileInput"
+                           class="hidden">
+
+                    <div x-show="!preview">
+                        <i class="fas fa-cloud-upload-alt text-4xl text-gray-400 mb-4"></i>
+                        <p class="text-gray-600 mb-2">Нажмите для выбора изображения</p>
+                        <p class="text-sm text-gray-500">PNG, JPG, JPEG до 16MB</p>
+                        <button type="button"
+                                @click="$refs.fileInput.click()"
+                                class="mt-4 bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg transition-colors">
+                            Выбрать файл
+                        </button>
+                    </div>
+
+                    <div x-show="preview" class="space-y-4">
+                        <img :src="preview" alt="Preview" class="max-w-full h-48 object-cover rounded-lg mx-auto">
+                        <button type="button"
+                                @click="clearPreview()"
+                                class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition-colors">
+                            Удалить изображение
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="flex items-center justify-between pt-6 border-t border-gray-200">
+                <a href="{{ url_for('home') }}"
+                   class="text-gray-600 hover:text-gray-800 transition-colors flex items-center space-x-2">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Назад</span>
+                </a>
+
+                <button type="submit"
+                        :disabled="loading || !name.trim()"
+                        :class="loading ? 'opacity-50 cursor-not-allowed' : ''"
+                        class="bg-primary-600 hover:bg-primary-700 text-white px-8 py-3 rounded-lg transition-colors flex items-center space-x-2">
+                    <i class="fas fa-plus" x-show="!loading"></i>
+                    <i class="fas fa-spinner fa-spin" x-show="loading"></i>
+                    <span x-text="loading ? 'Добавление...' : 'Добавить категорию'"></span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+function categoryForm() {
+    return {
+        name: '',
+        preview: null,
+        loading: false,
+
+        handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    this.preview = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            } else {
+                this.preview = null;
+            }
+        },
+
+        clearPreview() {
+            this.preview = null;
+            this.$refs.fileInput.value = '';
+        }
+    }
+}
+</script>
+{% endblock %}

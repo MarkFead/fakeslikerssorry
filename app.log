@@ -1,0 +1,70 @@
+2025-06-02 03:45:54,830 - __main__ - INFO - Database initialized successfully
+2025-06-02 03:45:54,831 - __main__ - INFO - Database migration completed
+2025-06-02 03:45:54,857 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.36:5000
+2025-06-02 03:45:54,857 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-02 03:45:54,858 - werkzeug - INFO -  * Restarting with stat
+2025-06-02 03:45:55,084 - __main__ - INFO - Database initialized successfully
+2025-06-02 03:45:55,084 - __main__ - INFO - Database migration completed
+2025-06-02 03:45:55,101 - werkzeug - WARNING -  * Debugger is active!
+2025-06-02 03:45:55,103 - werkzeug - INFO -  * Debugger PIN: 142-752-961
+2025-06-02 03:46:20,129 - werkzeug - INFO - 127.0.0.1 - - [02/Jun/2025 03:46:20] "GET /edit_category/2 HTTP/1.1" 200 -
+2025-06-02 03:46:24,100 - __main__ - INFO - Category 'skywexrocky' updated with image_path: None
+2025-06-02 03:46:24,101 - werkzeug - INFO - 127.0.0.1 - - [02/Jun/2025 03:46:24] "[32mPOST /edit_category/2 HTTP/1.1[0m" 302 -
+2025-06-02 03:46:24,112 - werkzeug - INFO - 127.0.0.1 - - [02/Jun/2025 03:46:24] "GET / HTTP/1.1" 200 -
+2025-06-02 03:46:27,292 - werkzeug - INFO - 127.0.0.1 - - [02/Jun/2025 03:46:27] "GET /edit_category/2 HTTP/1.1" 200 -
+2025-06-02 03:47:39,732 - werkzeug - INFO -  * Detected change in 'F:\\code\\1\\app.py', reloading
+2025-06-02 03:47:39,821 - werkzeug - INFO -  * Restarting with stat
+2025-06-02 03:47:40,300 - __main__ - INFO - Database initialized successfully
+2025-06-02 03:47:40,301 - __main__ - INFO - Database migration completed
+2025-06-02 03:47:40,322 - werkzeug - WARNING -  * Debugger is active!
+2025-06-02 03:47:40,324 - werkzeug - INFO -  * Debugger PIN: 142-752-961
+2025-06-02 03:47:41,784 - __main__ - INFO - Database initialized successfully
+2025-06-02 03:47:41,785 - __main__ - INFO - Database migration completed
+2025-06-02 03:47:41,815 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.36:5000
+2025-06-02 03:47:41,815 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-02 03:47:41,815 - werkzeug - INFO -  * Restarting with stat
+2025-06-02 03:47:42,062 - __main__ - INFO - Database initialized successfully
+2025-06-02 03:47:42,063 - __main__ - INFO - Database migration completed
+2025-06-02 03:47:42,090 - werkzeug - WARNING -  * Debugger is active!
+2025-06-02 03:47:42,094 - werkzeug - INFO -  * Debugger PIN: 142-752-961
+2025-06-02 03:47:43,982 - werkzeug - INFO - 127.0.0.1 - - [02/Jun/2025 03:47:43] "GET /edit_category/2 HTTP/1.1" 200 -
+2025-06-02 03:47:48,029 - __main__ - INFO - Preparing to access folder for category 'skywexrocky': static/uploads\ct2\base
+2025-06-02 03:47:48,030 - __main__ - INFO - Folder accessible: static/uploads\ct2\base
+2025-06-02 03:47:48,034 - __main__ - INFO - Category 'skywexrocky' updated with image_path: None
+2025-06-02 03:47:48,034 - werkzeug - INFO - 127.0.0.1 - - [02/Jun/2025 03:47:48] "[32mPOST /edit_category/2 HTTP/1.1[0m" 302 -
+2025-06-02 03:47:48,045 - werkzeug - INFO - 127.0.0.1 - - [02/Jun/2025 03:47:48] "GET / HTTP/1.1" 200 -
+2025-06-02 03:47:49,892 - werkzeug - INFO - 127.0.0.1 - - [02/Jun/2025 03:47:49] "GET /category/2 HTTP/1.1" 200 -
+2025-06-02 03:47:51,829 - werkzeug - INFO - 127.0.0.1 - - [02/Jun/2025 03:47:51] "GET / HTTP/1.1" 200 -
+2025-06-02 03:48:39,753 - werkzeug - INFO - 127.0.0.1 - - [02/Jun/2025 03:48:39] "GET /edit_category/2 HTTP/1.1" 200 -
+2025-06-02 03:48:43,972 - __main__ - INFO - Preparing to access folder for category 'skywexrocky': static/uploads\ct2\base
+2025-06-02 03:48:43,972 - __main__ - INFO - Folder accessible: static/uploads\ct2\base
+2025-06-02 03:48:43,976 - __main__ - INFO - Category 'skywexrocky' updated with image_path: None
+2025-06-02 03:48:43,976 - werkzeug - INFO - 127.0.0.1 - - [02/Jun/2025 03:48:43] "[32mPOST /edit_category/2 HTTP/1.1[0m" 302 -
+2025-06-02 03:48:43,982 - werkzeug - INFO - 127.0.0.1 - - [02/Jun/2025 03:48:43] "GET / HTTP/1.1" 200 -
+2025-06-02 03:49:46,820 - werkzeug - INFO - 127.0.0.1 - - [02/Jun/2025 03:49:46] "GET / HTTP/1.1" 200 -
+2025-06-02 03:49:48,465 - werkzeug - INFO - 127.0.0.1 - - [02/Jun/2025 03:49:48] "GET /edit_category/2 HTTP/1.1" 200 -
+2025-06-02 03:49:54,610 - werkzeug - INFO - 127.0.0.1 - - [02/Jun/2025 03:49:54] "GET /edit_category/2 HTTP/1.1" 200 -
+2025-06-02 03:50:28,665 - werkzeug - INFO - 127.0.0.1 - - [02/Jun/2025 03:50:28] "GET /edit_category/2 HTTP/1.1" 200 -
+2025-06-02 03:50:31,267 - __main__ - INFO - Preparing to access folder for category 'skywexrocky': static/uploads\ct2\base
+2025-06-02 03:50:31,268 - __main__ - INFO - Folder accessible: static/uploads\ct2\base
+2025-06-02 03:50:31,271 - __main__ - INFO - Category 'skywexrocky' updated with image_path: None
+2025-06-02 03:50:31,272 - werkzeug - INFO - 127.0.0.1 - - [02/Jun/2025 03:50:31] "[32mPOST /edit_category/2 HTTP/1.1[0m" 302 -
+2025-06-02 03:50:31,279 - werkzeug - INFO - 127.0.0.1 - - [02/Jun/2025 03:50:31] "GET / HTTP/1.1" 200 -
+2025-06-02 03:50:32,791 - werkzeug - INFO - 127.0.0.1 - - [02/Jun/2025 03:50:32] "GET /edit_category/2 HTTP/1.1" 200 -
+2025-06-02 03:51:26,911 - werkzeug - INFO - 127.0.0.1 - - [02/Jun/2025 03:51:26] "GET / HTTP/1.1" 200 -
+2025-06-02 03:51:27,533 - werkzeug - INFO - 127.0.0.1 - - [02/Jun/2025 03:51:27] "GET / HTTP/1.1" 200 -
+2025-06-02 03:51:29,099 - werkzeug - INFO - 127.0.0.1 - - [02/Jun/2025 03:51:29] "GET /category/2 HTTP/1.1" 200 -
+2025-06-02 03:52:39,310 - werkzeug - INFO - 127.0.0.1 - - [02/Jun/2025 03:52:39] "GET /category/2 HTTP/1.1" 200 -
+2025-06-02 03:52:41,377 - werkzeug - INFO - 127.0.0.1 - - [02/Jun/2025 03:52:41] "GET / HTTP/1.1" 200 -
+2025-06-02 03:52:43,066 - werkzeug - INFO - 127.0.0.1 - - [02/Jun/2025 03:52:43] "GET /edit_category/2 HTTP/1.1" 200 -
+2025-06-02 03:52:46,880 - __main__ - INFO - Preparing to access folder for category 'skywexrocky': static/uploads\ct2\base
+2025-06-02 03:52:46,881 - __main__ - INFO - Folder accessible: static/uploads\ct2\base
+2025-06-02 03:52:46,884 - __main__ - INFO - Category 'skywexrocky' updated with image_path: None
+2025-06-02 03:52:46,885 - werkzeug - INFO - 127.0.0.1 - - [02/Jun/2025 03:52:46] "[32mPOST /edit_category/2 HTTP/1.1[0m" 302 -
+2025-06-02 03:52:46,891 - werkzeug - INFO - 127.0.0.1 - - [02/Jun/2025 03:52:46] "GET / HTTP/1.1" 200 -
